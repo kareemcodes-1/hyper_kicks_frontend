@@ -1,0 +1,129 @@
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router';
+import { useStore } from '../store/store';
+import { useFormStatus } from 'react-dom';
+import Loading from '../components/loading';
+import { Label } from '../components/ui/label';
+import { Input } from '../components/ui/input';
+import toast from 'react-hot-toast';
+
+const SubmitBtn = () => {
+  const {pending} = useFormStatus();
+  return <button disabled={pending} type="submit" className="flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-white">{pending ? <Loading /> : 'Sign in'}</button>
+}
+
+const Login = () => {
+
+  let navigate = useNavigate();
+
+  const {setUserInfo, userInfo} = useStore();
+
+    useEffect(() => {
+        if(userInfo){
+            navigate('/');
+        }
+    }, [userInfo, navigate])
+
+
+
+    const formAction = async (formData: any) => {
+        try {
+            const userData = {
+                email: formData.get('email'),
+                password: formData.get('password'),
+            }
+    
+            const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/users/auth/login`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(userData),
+            });
+
+            const data = await res.json();
+    
+            if(res.ok){
+                setUserInfo(data);
+            }else{
+                toast('Something went wrong');
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+  return (
+    
+<div className="min-h-screen flex">
+  <div className="flex flex-col justify-center w-full lg:w-1/2 px-6 py-12 lg:px-8">
+    <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+      <h2 className="mt-10 text-center text-[1.3rem] font-semibold text-black azert-mono">
+        Sign in to your account
+      </h2>
+    </div>
+
+    <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <form className="space-y-6" action={formAction}>
+        <div>
+          <Label htmlFor="email">Email address</Label>
+          <div className="mt-2">
+            <Input  
+               type="email"
+              name="email"
+              id="email"/>
+          </div>
+        </div>
+
+        <div>
+          <div className="flex items-center justify-between">
+            <Label htmlFor="password">Password</Label>
+            <div className="text-sm">
+              <a
+                href="#"
+                className="font-semibold text-gray-600"
+              >
+                Forgot password?
+              </a>
+            </div>
+          </div>
+          <div className="mt-2">
+            <Input  
+              type="password"
+              name="password"
+              id="password" 
+            />
+          </div>
+        </div>
+
+        <div>
+          <SubmitBtn />
+        </div>
+      </form>
+
+      <p className="mt-10 text-center text-sm text-gray-500">
+        Dont have an account?{' '}
+        <a
+          href="/auth/register"
+          className="font-semibold text-black underline"
+        >
+          Sign up
+        </a>
+      </p>
+    </div>
+  </div>
+
+
+  <div className="hidden lg:block lg:w-1/2">
+    <img
+      src="https://images.pexels.com/photos/12628401/pexels-photo-12628401.jpeg?auto=compress&cs=tinysrgb&w=1920"
+      alt="Right side illustration"
+      className="h-[100vh] w-full object-cover"
+    />
+  </div>
+</div>
+
+  )
+}
+
+export default Login;

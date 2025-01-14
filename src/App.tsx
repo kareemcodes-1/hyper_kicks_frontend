@@ -1,0 +1,64 @@
+import { useEffect } from "react"
+import Hero from "./components/Hero"
+import MenProducts from "./components/MenProducts"
+import WomenProducts from "./components/WomenProducts"
+import Lenis from "lenis";
+import 'lenis/dist/lenis.css'
+import Collections from "./components/Collections"
+import gsap from "gsap";
+import ScrollTrigger from "gsap-trial/ScrollTrigger";
+import Layout from "./layout"
+import { useStore } from "./store/store"
+
+gsap.registerPlugin(ScrollTrigger);
+
+function App() {
+
+  const { setProducts, setCollections } = useStore();
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      autoRaf: true,
+    });
+    
+    // Listen for the scroll event and log the event data
+    lenis.on('scroll', () => {
+    });
+  }, []);
+
+  useEffect(() => {
+      (async function fetchProductsAndCollections() {
+        try {
+          const [productsRes, collectionsRes] = await Promise.all([
+            fetch(`${import.meta.env.VITE_SERVER_URL}/api/products`, {
+              method: "GET",
+            }),
+            fetch(`${import.meta.env.VITE_SERVER_URL}/api/collections`, {
+              method: "GET",
+            }),
+          ]);
+  
+          const productsData = await productsRes.json();
+          const collectionsData = await collectionsRes.json();
+  
+          setProducts(productsData);
+          setCollections(collectionsData);
+        } catch (error) {
+          console.error("Failed to fetch products or collections", error);
+        }
+      })();
+    }, []);
+
+  return (
+    
+    <Layout>
+         <Hero />
+         <Collections />
+         <MenProducts />
+         <WomenProducts />
+    </Layout>
+  )
+
+}
+
+export default App
