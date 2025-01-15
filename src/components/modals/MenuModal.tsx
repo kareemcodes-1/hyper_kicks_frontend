@@ -1,10 +1,10 @@
 
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { createPortal } from "react-dom";
-import gsap from "gsap";
-import SplitText from "gsap-trial/SplitText";
+// import gsap from "gsap";
+// import SplitText from "gsap-trial/SplitText";
 
-gsap.registerPlugin(SplitText);
+// gsap.registerPlugin(SplitText);
 
 
 const MenuModal = ({
@@ -15,17 +15,17 @@ const MenuModal = ({
   openMenuModal: boolean;
 }) => {
 
-    useEffect(() => {
-        if(openMenuModal){
-            const navLinks = new SplitText(document.querySelectorAll('.nav-links'), {type: "lines"});
-            gsap.from(navLinks.lines, {
-                yPercent: 100,
-                stagger: 0.1,
-                duration: 0.8,
-                ease: "power3.inOut"
-            })
-        }
-    }, [openMenuModal]);
+    // useEffect(() => {
+    //     if(openMenuModal){
+    //         const navLinks = new SplitText(document.querySelectorAll('.nav-links'), {type: "lines"});
+    //         gsap.from(navLinks.lines, {
+    //             yPercent: 100,
+    //             stagger: 0.1,
+    //             duration: 0.8,
+    //             ease: "power3.inOut"
+    //         })
+    //     }
+    // }, [openMenuModal]);
 
   return createPortal(
     <div

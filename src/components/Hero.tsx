@@ -1,29 +1,34 @@
 import { useEffect } from 'react'
 import { IoIosArrowRoundDown } from "react-icons/io";
-import SplitText from 'gsap-trial/SplitText';
-import gsap from 'gsap';
+// import SplitText from 'gsap/SplitText';
+// import gsap from 'gsap';
+// // import * as SplitText from '../lib/Split3.min.js';
+// import SplitText from '../lib/Split3.min.js';
 
-gsap.registerPlugin(SplitText);
+
 
 const Hero = () => {
 
   useEffect(() => {
-    let heroHeading = new SplitText(".hero-heading", {type: "chars"});
-    let heroDescription = new SplitText(".hero-desc", {type: "lines"});
 
-    gsap.from(heroHeading.chars, {
-      yPercent: 100,
-      duration: 1,
-      stagger: 0.040,
-      // ease: "back.out"
-    });
+ 
+    // let heroHeading = new SplitText(".hero-heading", {type: "chars"});
+ 
+    // let heroDescription = new SplitText(".hero-desc", {type: "lines"});
 
-    gsap.fromTo(".hero-img", 
-      { clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)", scale: 1.5, ease: "power3.inOut",  duration: 2, opacity: 0.2 },
-      { clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)", scale: 1,  ease: "power3.inOut", duration: 2, opacity: 1 }
-    );
+    // gsap.from(heroHeading.chars, {
+    //   yPercent: 100,
+    //   duration: 1,
+    //   stagger: 0.040,
+    //   // ease: "back.out"
+    // });
 
-    gsap.from(heroDescription.lines, {duration: 1.5, delay: 0.2, x: -200, autoAlpha: 0, ease: "power3.inOut", stagger: 0.05});
+    // gsap.fromTo(".hero-img", 
+    //   { clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)", scale: 1.5, ease: "power3.inOut",  duration: 2, opacity: 0.2 },
+    //   { clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)", scale: 1,  ease: "power3.inOut", duration: 2, opacity: 1 }
+    // );
+
+    // gsap.from(heroDescription.lines, {duration: 1.5, delay: 0.2, x: -200, autoAlpha: 0, ease: "power3.inOut", stagger: 0.05});
     
 }, []);
 

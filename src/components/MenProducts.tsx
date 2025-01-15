@@ -1,12 +1,12 @@
 import  { useEffect, useRef } from 'react'
 import MenProductsSwiper from './swiper/MenProductsSwiper';
-import gsap from "gsap";
-import ScrollTrigger from "gsap-trial/ScrollTrigger";
-import SplitText from "gsap-trial/SplitText";
+// import gsap from "gsap";
+// import ScrollTrigger from "gsap-trial/ScrollTrigger";
+// import SplitText from "gsap-trial/SplitText";
 import { useStore } from '../store/store';
 
-gsap.registerPlugin(SplitText);
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(SplitText);
+// gsap.registerPlugin(ScrollTrigger);
 
 const MenProducts = () => {
 
@@ -19,20 +19,20 @@ const MenProducts = () => {
     if (!collections.length) return;
 
     if(ref.current){
-      let menCollectionHeading = new SplitText(".men-heading", {type: "chars"})
+      // let menCollectionHeading = new SplitText(".men-heading", {type: "chars"})
 
-      gsap.from(menCollectionHeading.chars, {
-          scrollTrigger: {
-              trigger: ".men-heading",
-              start: "top 80%",
-              end: "bottom 20%",
-              toggleActions: "play none none reverse",
-              // markers: true
-          },
-          yPercent: 100,
-          stagger: 0.025,
-          duration: 0.7
-      })
+      // gsap.from(menCollectionHeading.chars, {
+      //     scrollTrigger: {
+      //         trigger: ".men-heading",
+      //         start: "top 80%",
+      //         end: "bottom 20%",
+      //         toggleActions: "play none none reverse",
+      //         // markers: true
+      //     },
+      //     yPercent: 100,
+      //     stagger: 0.025,
+      //     duration: 0.7
+      // })
     }
   }, [ref.current])
 
