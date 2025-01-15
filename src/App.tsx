@@ -9,7 +9,6 @@ import gsap from "gsap";
 import Layout from "./layout"
 import { useStore } from "./store/store"
 
-gsap.registerPlugin(ScrollTrigger);
 
 function App() {
 
