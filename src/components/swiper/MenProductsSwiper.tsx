@@ -52,8 +52,7 @@ export default function MenProductsSwiper() {
     if (collections[0]?._id) {
       (async function () {
         try {
-          const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/collections/products/collection/${collections[0]._id}`);
-          if (!res.ok) throw new Error("Failed to fetch products for collection.");
+          const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/collections/products/collection/${collections[0]._id}`);
           const data = await res.json();
           setMenCollectionProducts(data);
         } catch (error) {
