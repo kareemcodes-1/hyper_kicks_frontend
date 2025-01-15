@@ -5,7 +5,6 @@ import WomenProducts from "./components/WomenProducts"
 import Lenis from "lenis";
 import 'lenis/dist/lenis.css'
 import Collections from "./components/Collections"
-import gsap from "gsap";
 import Layout from "./layout"
 import { useStore } from "./store/store"
 
