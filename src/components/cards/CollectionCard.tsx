@@ -3,11 +3,11 @@ import { Collection } from "../../types/types";
 import { MdArrowOutward } from "react-icons/md";
 import { Link } from "react-router";
 import gsap from "gsap";
-import ScrollTrigger from "gsap-trial/ScrollTrigger";
-import SplitText from "gsap-trial/SplitText";
+// import ScrollTrigger from "gsap-trial/ScrollTrigger";
+// import SplitText from "gsap-trial/SplitText";
 
-gsap.registerPlugin(SplitText);
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(SplitText);
+// gsap.registerPlugin(ScrollTrigger);
 
 const CollectionCard = ({
   collection,

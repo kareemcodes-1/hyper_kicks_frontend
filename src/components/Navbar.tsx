@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useStore } from "../store/store";
 import { Link, useNavigate } from "react-router";
-import SplitText from "gsap-trial/SplitText";
-import gsap from "gsap";
+// import SplitText from "gsap-trial/SplitText";
+// import gsap from "gsap";
 import CartModal from "./modals/CartModal";
 import SearchModal from "./modals/SearchModal";
 import { Menu, Search, ShoppingCart } from "lucide-react";
 import MenuModal from "./modals/MenuModal";
 
-gsap.registerPlugin(SplitText);
+// gsap.registerPlugin(SplitText);
 
 const Navbar = () => {
   let {
