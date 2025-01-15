@@ -6,7 +6,6 @@ import Lenis from "lenis";
 import 'lenis/dist/lenis.css'
 import Collections from "./components/Collections"
 import gsap from "gsap";
-import ScrollTrigger from "gsap-trial/ScrollTrigger";
 import Layout from "./layout"
 import { useStore } from "./store/store"
 
