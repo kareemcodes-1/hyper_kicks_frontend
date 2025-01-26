@@ -143,6 +143,8 @@ const Navbar = () => {
         </div>
       </nav>
 
+      
+
       {openCartModal && (
         <CartModal
         />

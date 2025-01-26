@@ -1,6 +1,8 @@
 
 // import { useEffect } from "react";
 import { createPortal } from "react-dom";
+import { useStore } from "../../store/store";
+import { useNavigate } from "react-router";
 // import gsap from "gsap";
 // import SplitText from "gsap-trial/SplitText";
 
@@ -14,6 +16,24 @@ const MenuModal = ({
   closeModal: () => void;
   openMenuModal: boolean;
 }) => {
+
+  const {logout} = useStore();
+  const navigate = useNavigate();
+
+  async function Logout() {
+    try {
+      const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/users/auth/logout`, {
+        method: "POST",
+      });
+
+      if (res.ok) {
+        logout();
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
     // useEffect(() => {
     //     if(openMenuModal){
@@ -44,8 +64,10 @@ const MenuModal = ({
       <div className="flex items-start flex-col p-[1rem] mt-[10rem] gap-[1rem]">
           <ul className="flex flex-col text-[3rem]">
                <li className="overflow-hidden"><a href="/" className="nav-links">HOME</a></li>
-               <li className="overflow-hidden"><a href="/products" className="nav-links">PRODUCTS</a></li>
+               {/* <li className="overflow-hidden"><a href="/products" className="nav-links">PRODUCTS</a></li> */}
                <li className="overflow-hidden"><a href="/orders" className="nav-links">ORDERS</a></li>
+               <li className="overflow-hidden"><a href="/orders" className="nav-links">WISHLISTS</a></li>
+               <li className="overflow-hidden"><a onClick={Logout} className="nav-links">LOGOUT</a></li>
           </ul>
       </div>
     </div>,
