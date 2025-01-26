@@ -17,7 +17,7 @@ const MenuModal = ({
   openMenuModal: boolean;
 }) => {
 
-  const {logout} = useStore();
+  const {logout, userInfo} = useStore();
   const navigate = useNavigate();
 
   async function Logout() {
@@ -67,7 +67,14 @@ const MenuModal = ({
                {/* <li className="overflow-hidden"><a href="/products" className="nav-links">PRODUCTS</a></li> */}
                <li className="overflow-hidden"><a href="/orders" className="nav-links">ORDERS</a></li>
                <li className="overflow-hidden"><a href="/orders" className="nav-links">WISHLISTS</a></li>
-               <li className="overflow-hidden"><a onClick={Logout} className="nav-links">LOGOUT</a></li>
+               {userInfo ? (
+                <>
+                <li className="overflow-hidden"><a href="/profile" className="nav-links">PROFILE</a></li>
+                <li className="overflow-hidden"><a onClick={Logout} className="nav-links">LOGOUT</a></li>
+                </>
+               ): (
+                <li className="overflow-hidden"><a href="/login" className="nav-links">LOGIN</a></li>
+               )}
           </ul>
       </div>
     </div>,
