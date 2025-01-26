@@ -11,7 +11,7 @@ const SubmitBtn = () => {
     const {pending} = useFormStatus();
 
     return (
-      <button type="submit" disabled={pending} className='border border-black rounded-[10rem] h-[2rem] lg:w-[10%] w-full cursor-pointer'>{pending ? <Loading /> : 'Save'}</button>
+      <button type="submit" disabled={pending} className='border border-black rounded-[10rem] h-[2rem] lg:w-[10%] w-full cursor-pointer'>{pending ? <Loading type='black'/> : 'Save'}</button>
     )
   }
 
