@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+// import { useEffect, useRef, useState } from 'react'
 import { IoIosArrowRoundDown } from "react-icons/io";
-import { SplitText } from '../lib/split-text';
-import { AnimatePresence, motion } from 'framer-motion';
+// import { SplitText } from '../lib/split-text';
+// import { AnimatePresence, motion } from 'framer-motion';
 import HeroText from './split-text/HeroText';
 // import SplitText from 'gsap/SplitText';
 // import gsap from 'gsap';

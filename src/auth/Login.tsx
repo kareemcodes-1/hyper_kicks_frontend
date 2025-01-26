@@ -9,7 +9,7 @@ import toast from 'react-hot-toast';
 
 const SubmitBtn = () => {
   const {pending} = useFormStatus();
-  return <button disabled={pending} type="submit" className="flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-white bebas">{pending ? <Loading /> : 'Sign in'}</button>
+  return <button disabled={pending} type="submit" className="flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-white bebas">{pending ? <Loading type='white'/> : 'Sign in'}</button>
 }
 
 const Login = () => {
