@@ -10,8 +10,8 @@ interface State {
     totalAmount: number;
     openCartModal: boolean;
     setOpenCartModal: (value: boolean) => void;
-    incrementQuantity: (quantity: number) => void;
-    decrementQuantity: (quantity: number) => void;
+    incrementQuantity: (id: number) => void;
+    decrementQuantity: (id: number) => void;
     addToCart: (data: CartItem) => void;
     collections: Collection[];
     products: Product[];
@@ -49,8 +49,8 @@ export const useStore = create<State>((set) => ({
     totalAmount: storedTotalAmount ? JSON.parse(storedTotalAmount) : 0,
     openCartModal: false,
     setOpenCartModal(value) {
-        return set((state) => ({
-            openCartModal: state.openCartModal = value
+        return set(() => ({
+            openCartModal: value,
         }))
     },
     incrementQuantity(id) {

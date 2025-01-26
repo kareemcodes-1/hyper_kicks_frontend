@@ -6,38 +6,35 @@ import toast from "react-hot-toast";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-const CartModal = ({
-  setOpenCartModal,
-  openCartModal,
-}: {
-  setOpenCartModal: () => void;
-  openCartModal: boolean;
-}) => {
-  const { products, cart, incrementQuantity, decrementQuantity, totalAmount, deleteCartItem, deleteAllCartItems } = useStore();
+const CartModal = () => {
+  const { products, cart, incrementQuantity, decrementQuantity, totalAmount, deleteCartItem, deleteAllCartItems, openCartModal, setOpenCartModal } = useStore();
   const ref = useRef<HTMLDivElement | null>(null);
-
+  
   useEffect(() => {
+    console.log("openCartModal:", openCartModal);
     const modal = ref.current;
   
     if (openCartModal && modal) {
-      // Animate in
+      // Open animation
       gsap.fromTo(
         modal,
-        { x: "100%"},
+        { x: "100%" },
         { x: 0, duration: 0.7, ease: "power3.inOut" }
       );
-    } else if (!openCartModal && modal) {
-      // Animate out
+    }  else if (!openCartModal && modal) {
+      // Close animation
       gsap.to(modal, {
         x: "100%",
         duration: 0.5,
         ease: "power3.inOut",
-        onComplete: () => {
-          setOpenCartModal();
-        },
       });
     }
   }, [openCartModal]);
+
+  const handleClose = () => {
+    setOpenCartModal(false); // Update state before animation starts
+  };
+  
 
   return createPortal(
     <div
@@ -88,7 +85,7 @@ const CartModal = ({
           <h1 className="text-[2rem] p-[1rem]">YOUR BAG</h1>
           <div
             className="absolute right-[1rem] top-[1rem] text-[1.8rem] cursor-pointer bebas"
-            onClick={setOpenCartModal}
+            onClick={handleClose}
           >
             Close
           </div>

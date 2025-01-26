@@ -9,7 +9,7 @@ import toast from 'react-hot-toast';
 
 const SubmitBtn = () => {
   const {pending} = useFormStatus();
-  return <button disabled={pending} type="submit" className="flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-white">{pending ? <Loading /> : 'Sign in'}</button>
+  return <button disabled={pending} type="submit" className="flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-white bebas">{pending ? <Loading /> : 'Sign in'}</button>
 }
 
 const Login = () => {
@@ -26,11 +26,23 @@ const Login = () => {
 
 
 
-    const formAction = async (formData: any) => {
+    const formAction = async (formData: FormData) => {
         try {
+            const email = formData.get('email');
+            const password = formData.get('password');
             const userData = {
-                email: formData.get('email'),
-                password: formData.get('password'),
+                email,
+                password
+            }
+
+            if (!email || !password) {
+              if (!email) {
+                toast.error('Email is required.');
+              }
+              if (!password) {
+                toast.error('Password is required.');
+              }
+              return;
             }
     
             const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/users/auth/login`, {
@@ -38,6 +50,7 @@ const Login = () => {
                 headers: {
                     "Content-Type": "application/json",
                 },
+                credentials: "include",
                 body: JSON.stringify(userData),
             });
 
@@ -46,10 +59,11 @@ const Login = () => {
             if(res.ok){
                 setUserInfo(data);
             }else{
-                toast('Something went wrong');
+              toast.error('Login failed');
             }
         } catch (error) {
             console.log(error);
+            toast.error('Something went wrong. Please try again.');
         }
     }
 
@@ -58,7 +72,7 @@ const Login = () => {
 <div className="min-h-screen flex">
   <div className="flex flex-col justify-center w-full lg:w-1/2 px-6 py-12 lg:px-8">
     <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-      <h2 className="mt-10 text-center text-[1.3rem] font-semibold text-black azert-mono">
+      <h2 className="mt-10 text-center text-[1.3rem] font-semibold text-black bebas">
         Sign in to your account
       </h2>
     </div>
@@ -66,7 +80,7 @@ const Login = () => {
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <form className="space-y-6" action={formAction}>
         <div>
-          <Label htmlFor="email">Email address</Label>
+          <Label htmlFor="email" className='bebas'>Email address</Label>
           <div className="mt-2">
             <Input  
                type="email"
@@ -77,11 +91,11 @@ const Login = () => {
 
         <div>
           <div className="flex items-center justify-between">
-            <Label htmlFor="password">Password</Label>
-            <div className="text-sm">
+            <Label htmlFor="password" className='bebas'>Password</Label>
+            <div className="text-[.8rem]">
               <a
                 href="#"
-                className="font-semibold text-gray-600"
+                className="font-semibold bebas text-muted-foreground bebas"
               >
                 Forgot password?
               </a>
@@ -101,11 +115,11 @@ const Login = () => {
         </div>
       </form>
 
-      <p className="mt-10 text-center text-sm text-gray-500">
+      <p className="mt-10 text-center text-[.825rem] text-muted-foreground bebas">
         Dont have an account?{' '}
         <a
-          href="/auth/register"
-          className="font-semibold text-black underline"
+          href="/register"
+          className="font-semibold text-black underline bebas"
         >
           Sign up
         </a>

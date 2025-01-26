@@ -1,4 +1,3 @@
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './App.css'
 import App from './App.tsx'
@@ -17,10 +16,11 @@ import Wishlists from './wishlists/page.tsx';
 import ProtectRouteProvider from './provider/ProtectRouteProvider.tsx';
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-            <ToasterProvider />
+  // <StrictMode>
+
 
             <BrowserRouter>
+                        <ToasterProvider />
                <Routes>
                   <Route
                     path="/profile"
@@ -42,5 +42,5 @@ createRoot(document.getElementById('root')!).render(
                    <Route path='/checkout/cancel' element={<ProtectRouteProvider><CancelPage /></ProtectRouteProvider>}></Route>
                </Routes>
            </BrowserRouter>
-  </StrictMode>,
+  // </StrictMode>,
 )

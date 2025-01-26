@@ -5,10 +5,11 @@ import { useFormStatus } from 'react-dom';
 import Loading from '../components/loading';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
+import toast from 'react-hot-toast';
 
 const SubmitBtn = () => {
   const {pending} = useFormStatus();
-  return <button disabled={pending} type="submit" className="flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-white">{pending ? <Loading /> : 'Sign up'}</button>
+  return <button disabled={pending} type="submit" className="bebas flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-white">{pending ? <Loading /> : 'Sign up'}</button>
 }
 
 const Register = () => {
@@ -18,10 +19,26 @@ const Register = () => {
 
     const formAction = async (formData: any) => {
         try {
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const password = formData.get('password');
             const userData = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                password: formData.get('password'),
+                name,
+                email,
+                password
+            }
+
+            if (!name || !email || !password) {
+              if (!name) {
+                toast.error('Name is required.');
+              }
+              if (!email) {
+                toast.error('Email is required.');
+              }
+              if (!password) {
+                toast.error('Password is required.');
+              }
+              return;
             }
     
             const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/users/auth/register`, {
@@ -29,6 +46,7 @@ const Register = () => {
                 headers: {
                     "Content-Type": "application/json",
                 },
+                credentials: "include",
                 body: JSON.stringify(userData),
             });
 
@@ -38,10 +56,11 @@ const Register = () => {
                 setUserInfo(data);
                 navigate('/');
             }else{
-                alert('Something went wrong');
+                toast.error('Register failed');
             }
         } catch (error) {
             console.log(error);
+            toast.error('Something went wrong');
         }
     }
 
@@ -49,7 +68,7 @@ const Register = () => {
 <div className="min-h-screen flex">
   <div className="flex flex-col justify-center w-full lg:w-1/2 px-6 py-12 lg:px-8">
     <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-      <h2 className="mt-10 text-center text-[1.3rem] azert-mono font-semibold text-black">
+      <h2 className="mt-10 text-center text-[1.3rem]  font-semibold text-black bebas">
         Sign up to your account
       </h2>
     </div>
@@ -60,7 +79,7 @@ const Register = () => {
       <div>
           <label
             htmlFor="name"
-            className="block text-sm font-medium text-gray-900"
+            className='bebas'
           >
             Name
           </label>
@@ -74,7 +93,7 @@ const Register = () => {
         </div>
 
         <div>
-        <Label htmlFor="email">Email address</Label>
+        <Label htmlFor="email"  className='bebas'>Email address</Label>
           <div className="mt-2">
             <Input  
                type="email"
@@ -85,11 +104,11 @@ const Register = () => {
 
         <div>
           <div className="flex items-center justify-between">
-          <Label htmlFor="password">Password</Label>
-            <div className="text-sm">
+          <Label htmlFor="password"  className='bebas'>Password</Label>
+            <div className="text-[.8rem]">
               <a
                 href="#"
-                className="font-semibold text-gray-600"
+                className="font-semibold text-muted-foreground bebas"
               >
                 Forgot password?
               </a>
@@ -109,10 +128,10 @@ const Register = () => {
         </div>
       </form>
 
-      <p className="mt-10 text-center text-sm text-gray-500">
+      <p className="mt-10 text-center text-[.825rem] text-muted-foreground bebas">
       Already have an account?{' '}
         <a
-          href="/auth/login"
+          href="/login"
           className="font-semibold text-black underline"
         >
           Sign in

@@ -145,8 +145,6 @@ const Navbar = () => {
 
       {openCartModal && (
         <CartModal
-          setOpenCartModal={() => setOpenCartModal(false)}
-          openCartModal={openCartModal}
         />
       )}
       {openSearchModal && (

@@ -7,7 +7,13 @@ const Wishlists = () => {
   const {wishlists, setWishLists} = useStore();
   useEffect(() => {
       (async function () {
-           const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/wishlists`);
+           const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/wishlists`, {
+               method: "GET",
+               headers: {
+                    'Content-Type': 'application/json',
+               },
+               credentials: "include",
+           });
            const data = await res.json();
            setWishLists(data);
       })()

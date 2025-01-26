@@ -29,9 +29,15 @@ function App() {
           const [productsRes, collectionsRes] = await Promise.all([
             fetch(`${import.meta.env.VITE_SERVER_URL}/api/products`, {
               method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              }
             }),
             fetch(`${import.meta.env.VITE_SERVER_URL}/api/collections`, {
               method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              }
             }),
           ]);
   
