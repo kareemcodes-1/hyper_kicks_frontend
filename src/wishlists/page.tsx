@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useStore } from '../store/store'
 import Layout from '../layout';
 import ProductCard from '../components/cards/ProductCard';
+import OtherProducts from '../components/other-products';
 
 const Wishlists = () => {
   const {wishlists, setWishLists} = useStore();
@@ -40,7 +41,7 @@ const Wishlists = () => {
                    )}
               </div>
 
-
+              <OtherProducts />
          </div>
     </Layout>
   )

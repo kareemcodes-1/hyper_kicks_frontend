@@ -5,6 +5,7 @@ import Layout from '../../../layout';
 import { useStore } from '../../../store/store';
 import toast from "react-hot-toast";
 import MarqueeCartBtn from '../../../components/MarqueeCartBtn';
+import OtherProducts from '../../../components/other-products';
 
 const ProductPage = () => {
    
@@ -60,7 +61,7 @@ const ProductPage = () => {
 
    async function addToWishlist(product: Product | null){
        if(!userInfo){
-         navigate('/auth/login');
+         navigate('/login');
        }else{
           if(product){
               const data = {
@@ -118,6 +119,10 @@ const ProductPage = () => {
                     </div>
                 </div>
             </div>
+          
+          <div className='mt-[2rem]'>
+          <OtherProducts />
+          </div>
         </div>
     </Layout>
   )

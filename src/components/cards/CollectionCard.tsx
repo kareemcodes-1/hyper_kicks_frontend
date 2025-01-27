@@ -44,8 +44,8 @@ const CollectionCard = ({
               alt={collection.name}
               className="w-full h-full object-cover"
             />
-            <div className="absolute bottom-[1rem] right-[1rem] text-[3rem] text-white flex items-start gap-[.3rem]">
-              <h1>{collection.name}</h1>
+            <div className="absolute bottom-[1rem] right-[1rem] text-[3rem] text-white flex items-center justify-center gap-[.3rem]">
+              <h1 className="text-white">{collection.name}</h1>
               <MdArrowOutward />
             </div>
           </Link>

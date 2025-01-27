@@ -22,7 +22,7 @@ const Footer = () => {
 
           <div className='border border-l text-white grid grid-cols-2'>
                     <div className='border border-white p-[1rem]'>
-                         <h1 className='lg:text-[3rem] text-[2.5rem]'>LOCATION</h1>
+                         <h1 className='lg:text-[3rem] text-[2.5rem] text-white'>LOCATION</h1>
                         
                         <div className="lg:text-[1rem] text-[.9rem]">
                         <p>
@@ -38,7 +38,7 @@ const Footer = () => {
                     </div>
 
                     <div className='border border-white p-[1rem]'>
-                         <h1 className='lg:text-[3rem] text-[2.5rem]'>CONTACT</h1>
+                         <h1 className='lg:text-[3rem] text-[2.5rem] text-white'>CONTACT</h1>
                         
                         <div className="lg:text-[1rem] text-[.9rem]">
                         <p>
@@ -54,7 +54,7 @@ const Footer = () => {
                     </div>
 
                     <div className='border border-white p-[1rem]'>
-                         <h1 className='lg:text-[3rem] text-[2.5rem]'>STALK US</h1>
+                         <h1 className='lg:text-[3rem] text-[2.5rem] text-white'>STALK US</h1>
                         
                         <div className="flex flex-col gap-[.5rem]">
                         <p className="lg:text-[1.3rem] text-[.9rem]">
@@ -69,7 +69,7 @@ const Footer = () => {
                         </div>
                     </div>
                     <div className='border border-white p-[1rem]'>
-                         <h1 className='lg:text-[3rem] text-[2.5rem]'>SHOP</h1>
+                         <h1 className='lg:text-[3rem] text-[2.5rem] text-white'>SHOP</h1>
                         
                         <div className="flex flex-col gap-[.5rem]">
                           {collections.map((collection) => (

@@ -1,4 +1,4 @@
-import{ useState } from 'react'
+import{ useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom';
 import {
   Accordion,
@@ -11,20 +11,42 @@ import { Slider } from "../../components/ui/slider"
 import { Switch } from "../../components/ui/switch"
 import { useStore } from '../../store/store';
 import { formatCurrency } from '../../lib/formatCurrency';
+import gsap from 'gsap';
 
 
 
 
-const FilterModal = ({closeModal} : {closeModal: () => void;}) => {
+const FilterModal = ({openFilterModal, closeModal} : {openFilterModal: boolean; closeModal: () => void;}) => {
 
   const [value, setValue] = useState<number>(0);
   const {collections, handleFilterByPrice, resetFilter, handleFilterByInStock} = useStore();
   const [inStock, setInStock] = useState<boolean>(true);
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const modal = ref.current;
+  
+    if (openFilterModal && modal) {
+      // Open animation
+      gsap.fromTo(
+        modal,
+        { x: "100%" },
+        { x: 0, duration: 0.7, ease: "power3.inOut" }
+      );
+    }  else if (!openFilterModal && modal) {
+      // Close animation
+      gsap.to(modal, {
+        x: "100%",
+        duration: 0.5,
+        ease: "power3.inOut",
+      });
+    }
+  }, [openFilterModal]);
 
 
   return createPortal(
-      <div
-        className={`fixed top-0 right-0 h-screen w-[40%] bg-white shadow-lg p-[1rem] z-[100] transform transition-transform duration-300`}
+      <div ref={ref}
+        className={`fixed top-0 right-0 h-screen lg:w-[40%] w-full bg-white shadow-lg p-[1rem] z-[100]`}
       >
           <div className='w-full border-b border-black'>
           <h1 className="text-[2rem]">FILTERS</h1>

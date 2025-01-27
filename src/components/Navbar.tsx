@@ -122,15 +122,9 @@ const Navbar = () => {
           {openProfileMenu && (
             <div className="absolute right-0 top-[3rem] mt-2 w-[10rem] bg-white border border-gray-200 rounded-lg shadow-lg z-50">
               <ul className="flex flex-col text-[.925rem]">
-                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                  <Link to="/profile">Profile</Link>
-                </li>
-                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                  <Link to="/orders">Orders</Link>
-                </li>
-                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                  <Link to="/settings">Settings</Link>
-                </li>
+                  <Link to="/profile" className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Profile</Link>
+                  <Link className="px-4 py-2 hover:bg-gray-100 cursor-pointer" to="/orders">Orders</Link>
+                  <Link className="px-4 py-2 hover:bg-gray-100 cursor-pointer" to="/settings">Settings</Link>
                 <li
                   className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                   onClick={Logout}

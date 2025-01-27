@@ -19,7 +19,7 @@ const OrdersPage = () => {
   return (
     <Layout>
         <div className='mt-[5rem] px-[1.5rem] text-[4rem]'>
-             <h1>ORDERS</h1>
+             <h1 className='text-black'>YOUR ORDERS</h1>
 
              <div className='grid grid-cols-2 gap-[1rem]'>
                  {orders.length > 0 ? (
