@@ -22,7 +22,7 @@ const Hero = () => {
       <HeroText />
       
        <div className='flex lg:items-center items-start lg:flex-row flex-col gap-[1rem]'>
-        <div className='h-[15rem] lg:w-[60rem] w-full overflow-hidden'>
+        <div className='h-[15rem] lg:w-[50rem] w-full overflow-hidden'>
         <img src="https://i.pinimg.com/736x/f0/cd/40/f0cd40bf5b8d7d7efee3256b5766522a.jpg" alt="" className='w-full h-full object-cover hero-img'/>
         </div>
         <div className='overflow-hidden'>
