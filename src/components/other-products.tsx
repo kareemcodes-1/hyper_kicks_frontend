@@ -22,8 +22,8 @@ const OtherProducts = () => {
        const slicedProducts = products.slice(0, 6);
 
   return (
-    <div>
-        <h1 className='lg:text-[7rem] text-[3.5rem] text-black'>You may also like</h1>
+    <div className='mt-[3rem]'>
+        <h1 className='lg:text-[7rem] text-[3rem] text-black'>You may also like</h1>
         <div className='lg:grid flex flex-col items-start justify-center lg:grid-cols-3 gap-[1rem]'>
         {slicedProducts.map((product) => (
             <ProductCard product={product}/>

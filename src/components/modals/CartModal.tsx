@@ -93,7 +93,7 @@ const CartModal = () => {
           {cart.length > 0 ? (
             cart.map((item) => (
               <div className="flex items-center justify-between w-full p-[1rem]">
-                <div className="flex items-center gap-[1rem]">
+                <div className="flex items-start gap-[1rem]">
                   <img
                     src={item.product.images[0]}
                     alt=""
@@ -102,17 +102,19 @@ const CartModal = () => {
   
                   <div>
                     <h1 className="text-[1.5rem]">{item.product.name}</h1>
-                    <div>
-                    Sizes:
-                    {item.product.sizes.map((size) => (
-                       <span className="text-[1rem]">{size}</span>
-                    ))}
-                    </div>
+                    {item.product.sizes.length > 0 && (
+                      <div>
+                      {/* Sizes: */}
+                      {item.product.sizes.map((size) => (
+                         <span className="text-[1rem]">{size}</span>
+                      ))}
+                      </div>
+                    )}
                     <span className="text-[1rem] bebas">${item.product.price}</span>
                   </div>
                 </div>
   
-                <div className="flex items-center gap-[.5rem]">
+                <div className="flex items-center gap-[1rem]">
                 <div className="rounded-[1rem] flex items-center justify-center w-[4rem] gap-[.5rem] p-[.5rem] h-[2.2rem] border border-black">
                   <button
                     className="text-[1.5rem] azert-mono font-light"

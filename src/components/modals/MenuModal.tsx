@@ -66,7 +66,7 @@ const MenuModal = ({
                <li className="overflow-hidden"><a href="/" className="nav-links">HOME</a></li>
                {/* <li className="overflow-hidden"><a href="/products" className="nav-links">PRODUCTS</a></li> */}
                <li className="overflow-hidden"><a href="/orders" className="nav-links">ORDERS</a></li>
-               <li className="overflow-hidden"><a href="/orders" className="nav-links">WISHLISTS</a></li>
+               <li className="overflow-hidden"><a href="/wishlists" className="nav-links">WISHLISTS</a></li>
                {userInfo ? (
                 <>
                 <li className="overflow-hidden"><a href="/profile" className="nav-links">PROFILE</a></li>

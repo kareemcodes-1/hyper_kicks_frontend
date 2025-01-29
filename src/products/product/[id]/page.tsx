@@ -95,7 +95,7 @@ const ProductPage = () => {
             <div className='flex lg:flex-row flex-col items-start gap-[1rem]'>
                 <aside className='flex flex-col'>
                     {product?.images.map((image) => (
-                        <img src={image} alt="" className='border border-black w-[5rem] h-[5rem] object-cover' />
+                        <img src={image} alt={product.name} className='border border-black w-[5rem] h-[5rem] object-cover' />
                     ))}
                 </aside>
                 <div>
@@ -104,7 +104,7 @@ const ProductPage = () => {
                     ))}
                 </div>
                 <div className='lg:w-[50%] w-full'>
-                    <h1 className='text-[4.5rem]'>{product?.name}</h1>
+                    <h1 className='lg:text-[4.5rem] text-[3.5rem]'>{product?.name}</h1>
                     <span className='text-[1.5rem]'>${product?.price}</span>
                     <div className='flex items-center gap-[.5rem] my-[1rem]'>
                          {product?.sizes.map((size) => (

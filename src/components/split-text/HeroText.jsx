@@ -41,7 +41,7 @@ const HeroText = () => {
 
   return (
     <div className="overflow-hidden">
-<h1 className="text-[6rem] sm:text-[9rem] md:text-[12rem] lg:text-[20rem] lg:mt-0 mt-[3.5rem] lg:h-[20rem] lg:leading-[25rem]  relative text-black hero-heading m-0 p-0">
+<h1 className="text-[6rem] sm:text-[9rem] md:text-[12rem] lg:text-[22rem] lg:mt-[1.2rem] mt-[3.5rem] lg:h-[20rem] lg:leading-[25rem]  relative text-black hero-heading">
   HYPERKICKS
  </h1>
 </div>

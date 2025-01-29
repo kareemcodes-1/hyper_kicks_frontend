@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { useNavigate } from "react-router";
 import { useStore } from "../../store/store";
 import gsap from "gsap";
+import { Search } from "lucide-react";
 
 const SearchModal = ({
   setOpenSearchModal,
@@ -50,6 +51,11 @@ const SearchModal = ({
           navigate(`/search/product?q=${value.toLowerCase().split(' ').join('-')}`);
       }
   }
+
+  const handleSearchProduct = () => {
+    handleSearch(value);
+    navigate(`/search/product?q=${value.toLowerCase().split(' ').join('-')}`);
+  }
   
   return createPortal(
     <div ref={ref}
@@ -65,7 +71,11 @@ const SearchModal = ({
           </div>
       <div className="flex items-start p-[1rem] mt-[10rem] gap-[1rem]">
         <div className="border-b border-black w-full">
-            <input type="text"  placeholder="SEARCH PRODUCTS..." className="lg:text-[2rem] text-[1.5rem] w-full bg-transparent outline-none" id="" onChange={(e) => setValue(e.target.value)} onKeyDown={handleKeyDown}/>
+            <input type="text"  placeholder="SEARCH PRODUCTS..." className="lg:block hidden lg:text-[1.5rem] text-[1.3rem] w-full bg-transparent outline-none" id="" onChange={(e) => setValue(e.target.value)} onKeyDown={handleKeyDown}/>
+            <div className=" lg:hidden flex items-center">
+            <input type="text"  placeholder="SEARCH PRODUCTS..." className=" lg:text-[1.5rem] text-[1.2rem] tracking-[.1rem] w-full bg-transparent outline-none" id="" onChange={(e) => setValue(e.target.value)} onKeyDown={handleKeyDown}/>
+            <Search className="w-[2rem] h-[2rem] cursor-pointer" onClick={() => handleSearchProduct()}/>
+            </div>
         </div>
       </div>
 
@@ -75,3 +85,10 @@ const SearchModal = ({
 };
 
 export default SearchModal;
+
+// Useful Resources Link 👻
+// https://www.byhuy.com/
+// https://www.flaticon.com/
+// https://www.nextupwebdesign.com/
+// https://icons8.com/
+// https://svg2jsx.com/

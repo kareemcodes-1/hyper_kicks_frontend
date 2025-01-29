@@ -24,15 +24,15 @@ const Footer = () => {
                     <div className='border border-white p-[1rem]'>
                          <h1 className='lg:text-[3rem] text-[2.5rem] text-white'>LOCATION</h1>
                         
-                        <div className="lg:text-[1rem] text-[.9rem]">
+                        <div className="lg:text-[1.1rem] text-[.9rem]">
                         <p>
-                             Abuja lagos nigeria
+                           Abuja, Lagos, Nigeria
                          </p>
                          <p>
-                             Abuja lagos nigeria
+                         Kaduna, Kano, Nigeria
                          </p>
                          <p>
-                             Abuja lagos nigeria
+                         Port Harcourt, Rivers, Nigeria
                          </p>
                         </div>
                     </div>
@@ -40,15 +40,15 @@ const Footer = () => {
                     <div className='border border-white p-[1rem]'>
                          <h1 className='lg:text-[3rem] text-[2.5rem] text-white'>CONTACT</h1>
                         
-                        <div className="lg:text-[1rem] text-[.9rem]">
+                        <div className="lg:text-[1.1rem] text-[.9rem]">
                         <p>
-                             Abuja lagos nigeria
+                             +20 287 901 3440
                          </p>
                          <p>
-                             Abuja lagos nigeria
+                             hyperkicks@gmail.com
                          </p>
                          <p>
-                             Abuja lagos nigeria
+                         374-666-873
                          </p>
                         </div>
                     </div>
@@ -57,25 +57,25 @@ const Footer = () => {
                          <h1 className='lg:text-[3rem] text-[2.5rem] text-white'>STALK US</h1>
                         
                         <div className="flex flex-col gap-[.5rem]">
-                        <p className="lg:text-[1.3rem] text-[.9rem]">
+                        <p className="lg:text-[1.1rem] text-[.9rem]">
                              Instagram
                          </p>
-                         <p className="lg:text-[1.3rem] text-[.9rem]">
+                         <p className="lg:text-[1.1rem] text-[.9rem]">
                              Facebook
                          </p>
-                         <p className="lg:text-[1.3rem] text-[.9rem]">
+                         <p className="lg:text-[1.1rem] text-[.9rem]">
                              Linkedin
                          </p>
                         </div>
                     </div>
                     <div className='border border-white p-[1rem]'>
-                         <h1 className='lg:text-[3rem] text-[2.5rem] text-white'>SHOP</h1>
+                         <h1 className='lg:text-[3rem] text-[2.5rem] text-white'>COLLECTIONS</h1>
                         
                         <div className="flex flex-col gap-[.5rem]">
                           {collections.map((collection) => (
-                              <p className="lg:text-[1.3rem] text-[.9rem]">
+                              <a href={`/collections/collection/${collection._id}`} className="lg:text-[1.1rem] text-[.9rem]">
                                 {collection.name}
-                              </p>
+                              </a>
                           ))}
                         </div>
                     </div>
