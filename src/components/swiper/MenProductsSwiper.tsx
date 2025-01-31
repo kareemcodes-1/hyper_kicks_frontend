@@ -65,7 +65,7 @@ export default function MenProductsSwiper() {
   return (
     <div>
        <button
-       className={`drag-btn  ${hovered ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500 ease-in-out rounded-[10rem] z-[100] w-[7rem] h-[2.5rem] text-[1.2rem]`}
+       className={`drag-btn  ${hovered ? 'opacity-100' : 'opacity-0'} border-black border cursor-grab bg-white transition-opacity duration-500 ease-in-out rounded-[10rem] z-[100] w-[7rem] h-[2.5rem] text-[1.2rem]`}
       style={{
         position: "fixed",
         left: position.x,

@@ -12,6 +12,7 @@ import { Switch } from "../../components/ui/switch"
 import { useStore } from '../../store/store';
 import { formatCurrency } from '../../lib/formatCurrency';
 import gsap from 'gsap';
+import Marquee from 'react-fast-marquee';
 
 
 
@@ -19,9 +20,18 @@ import gsap from 'gsap';
 const FilterModal = ({openFilterModal, closeModal} : {openFilterModal: boolean; closeModal: () => void;}) => {
 
   const [value, setValue] = useState<number>(0);
-  const {collections, handleFilterByPrice, resetFilter, handleFilterByInStock} = useStore();
-  const [inStock, setInStock] = useState<boolean>(true);
+  const {collections, handleFilterByPrice, resetFilter, filterInStock, setFilterInStock} = useStore();
   const ref = useRef<HTMLDivElement | null>(null);
+
+  const [hovered, setHovered] = useState<boolean>(false);
+
+    function handleMouseEnter(){
+        setHovered(true);
+    }
+
+    function handleMouseLeave(){
+        setHovered(false);
+    }
 
   useEffect(() => {
     const modal = ref.current;
@@ -49,7 +59,7 @@ const FilterModal = ({openFilterModal, closeModal} : {openFilterModal: boolean; 
         className={`fixed top-0 right-0 h-screen lg:w-[40%] w-full bg-white shadow-lg p-[1rem] z-[100]`}
       >
           <div className='w-full border-b border-black'>
-          <h1 className="text-[2rem]">FILTERS</h1>
+          <h1 className="text-[1.8rem]">FILTERS</h1>
           <div onClick={closeModal}
             className="absolute right-[1rem] top-[1rem] text-[1.8rem] cursor-pointer bebas"
           >
@@ -81,7 +91,7 @@ const FilterModal = ({openFilterModal, closeModal} : {openFilterModal: boolean; 
                    <AccordionContent>
                       <div className='flex items-center gap-[3rem]'>
                       <div className='flex items-start gap-[.3rem]'>
-                           <Switch defaultChecked={inStock} onClick={() => {setInStock((prevInStock) => !prevInStock); handleFilterByInStock(inStock)}}/>
+                      <Switch defaultChecked={filterInStock} onCheckedChange={() => setFilterInStock(!filterInStock)}/>
                            <p>In Stock </p>
                       </div>
                       </div>
@@ -114,7 +124,7 @@ const FilterModal = ({openFilterModal, closeModal} : {openFilterModal: boolean; 
               </Accordion>
           </div>
 
-          <button type="button" onClick={resetFilter}>Reset Filter</button>
+          <button type="button" onClick={resetFilter} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className='bg-[#ddb31b] flex items-center justify-center border border-black text-black h-[2.2rem] px-4 rounded-[10rem] w-[10rem] cursor-pointer uppercase mt-[1.5rem]'>{hovered ? <Marquee autoFill>&nbsp; RESET FILTER </Marquee> : 'RESET FILTER'}</button>
       </div>,
       document.body
     );

@@ -8,13 +8,13 @@ const ProductCard = ({ product }: { product: Product }) => {
    <>
      <a
       href={`/products/product/${product._id}`}
-      className="lg:w-[400px] lg:p-0 p-[1rem] w-full border border-black border-t h-[500px] flex flex-col gap-0 text-center items-center justify-center relative"
+      className=" lg:p-0 p-[1rem] w-full border border-black border-t h-[500px] flex flex-col gap-0 text-center items-center justify-center relative"
     >
       <div>
         <img
           src={product.images[0]}
           alt="product"
-          className="h-[390px] w-[22rem] top-[1rem] left-[1rem] right-0 object-cover mb-[.5rem] border border-black"
+          className="h-[390px] lg:w-[25rem] w-[22rem] top-[1rem] left-[1rem] right-0 object-cover mb-[.5rem] border border-black"
         />
         <div className="flex items-start justify-between pt-[.5rem]">
           <div className="bottom-[1.5rem] left-[.5rem] ">

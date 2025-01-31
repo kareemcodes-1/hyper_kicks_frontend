@@ -28,7 +28,8 @@ interface State {
     deleteCartItem: (id: number) => void;
     deleteAllCartItems: () => void;
     handleFilterByPrice: (value: number) => void;
-    handleFilterByInStock: (value: boolean) => void;
+    filterInStock: boolean;
+    setFilterInStock: (value: boolean) => void;
     resetFilter: () => void;
 }
 
@@ -41,6 +42,7 @@ export const useStore = create<State>((set) => ({
     collections: [],
     originalProducts: [],
     orders: [],
+    filterInStock: true,
     wishlists: [],
     products: [],
     filteredProducts: [],
@@ -185,22 +187,10 @@ export const useStore = create<State>((set) => ({
 
     handleFilterByPrice(value) {
         return set((state) => {
-            let filteredProducts = [...state.products];
+            let filteredProducts = [...state.originalProducts];
             filteredProducts = filteredProducts.filter((product) => product.price <= value);
             return {
                 products: filteredProducts
-            }
-        })
-    },
-
-    handleFilterByInStock(value){
-        console.log(!value);
-        return set(state => {
-            let filteredProducts = [...state.products];
-            filteredProducts = filteredProducts.filter((product) => product.inStock === !value);
-
-            return {
-                products: filteredProducts,
             }
         })
     },
@@ -218,6 +208,16 @@ export const useStore = create<State>((set) => ({
                 filteredProducts: [...filteredProducts],
             }
         })
+    },
+
+    setFilterInStock(value) {
+        return set((state) => {
+            const filteredProducts = state.originalProducts.filter((product) => product.inStock === value);
+            return {
+                filterInStock: value,
+                products: filteredProducts,
+            };
+        });
     },
 }));
 

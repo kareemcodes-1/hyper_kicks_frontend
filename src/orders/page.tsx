@@ -10,7 +10,13 @@ const OrdersPage = () => {
 
   useEffect(() => {
     if(userInfo){
-      fetch(`${import.meta.env.VITE_SERVER_URL}/api/orders/user/${userInfo._id}`)
+      fetch(`${import.meta.env.VITE_SERVER_URL}/api/orders/user/${userInfo._id}`, {
+        method: "GET",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: "include"
+      })
       .then((res) => res.json())
       .then((data) => setOrders(data));
     }
