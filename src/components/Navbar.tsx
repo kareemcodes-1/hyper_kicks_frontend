@@ -55,7 +55,7 @@ const Navbar = () => {
   }
 
   return (
-    <header className="fixed w-full top-0 py-[.5rem] px-[1.5rem] border-b border-black z-[100]">
+    <header className="fixed w-full top-0 py-[.5rem] lg:px-[2rem] px-[1.5rem] border-b border-black z-[100]">
       
       <div className="lg:hidden block">
             <MenuModal openMenuModal={openMenuModal} closeModal={() => setOpenMenuModal(false)}/>

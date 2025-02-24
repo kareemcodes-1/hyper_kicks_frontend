@@ -3,6 +3,7 @@ import { Collection } from "../../types/types";
 import { MdArrowOutward } from "react-icons/md";
 import { Link } from "react-router";
 import gsap from "gsap";
+import { Skeleton } from "../ui/skeleton";
 // import ScrollTrigger from "gsap-trial/ScrollTrigger";
 // import SplitText from "gsap-trial/SplitText";
 
@@ -32,7 +33,7 @@ const CollectionCard = ({
   return (
     <>
       {isLoading ? (
-        <div className="skeleton lg:h-[450px] h-[300px] w-full"></div>
+        <Skeleton className="lg:h-[450px] h-[300px] w-full mr-[1rem] rounded-xl" />
       ) : (
         <div
           ref={ref}

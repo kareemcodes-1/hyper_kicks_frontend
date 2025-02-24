@@ -16,7 +16,7 @@ const Footer = () => {
        </Marquee>
     <div className='bg-black w-full lg:grid grid-cols-2'>
       <h1 className="lg:block hidden text-[5rem] lg:px-0 px-[.5rem] xs:text-[4rem] lg:text-[15rem] lg:leading-[15rem] text-white overflow-hidden">
-         DROP US A LINE
+         DROP US <br /> A LINE
        </h1>
 
 
@@ -26,13 +26,13 @@ const Footer = () => {
                         
                         <div className="lg:text-[1.1rem] text-[.9rem]">
                         <p>
-                           Abuja, Lagos, Nigeria
+                           Chicago, New York, Austin
                          </p>
                          <p>
-                         Kaduna, Kano, Nigeria
+                         Phoenix, Dallas, Baltimore
                          </p>
                          <p>
-                         Port Harcourt, Rivers, Nigeria
+                         Denver, Detroit, Atlanta
                          </p>
                         </div>
                     </div>
@@ -42,10 +42,10 @@ const Footer = () => {
                         
                         <div className="lg:text-[1.1rem] text-[.9rem]">
                         <p>
-                             +20 287 901 3440
+                             +1 287 901 3440
                          </p>
                          <p>
-                             hyperkicks@gmail.com
+                             hyperkicks <br className="lg:hidden block"/> @gmail.com
                          </p>
                          <p>
                          374-666-873

@@ -19,6 +19,7 @@ export default function WomenProductsSwiper() {
   const [womenCollectionProducts, setWomenCollectionProducts] = useState<Product[]>([]);
   const [position, setPosition] = useState({ x: 0, y: 0 });
     const [hovered, setHovered] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(false);
   
     useEffect(() => {
       const handleMouseMove = (event: MouseEvent) => {
@@ -49,13 +50,17 @@ export default function WomenProductsSwiper() {
      if (collections[1]?._id) {
        (async function () {
          try {
+          setLoading(true);
            const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/collections/products/collection/${collections[1]._id}`);
            if (!res.ok) throw new Error("Failed to fetch products for collection.");
            const data = await res.json();
            setWomenCollectionProducts(data);
          } catch (error) {
+          setLoading(false);
            console.error("Error fetching collection products:", error);
-         }
+         }finally{
+          setLoading(false);
+        }
        })();
      }
    }, [collections]);
@@ -88,7 +93,7 @@ export default function WomenProductsSwiper() {
       >
         {womenCollectionProducts.map((product) => (
                   <SwiperSlide onMouseMove={handleMouseOver} className="cursor-grab" onMouseLeave={handleMouseLeave} key={product._id}>
-                  <ProductCard product={product}/>
+                  <ProductCard loading={loading} product={product}/>
                 </SwiperSlide>
         ))}
       </Swiper>
@@ -106,7 +111,7 @@ export default function WomenProductsSwiper() {
       >
         {womenCollectionProducts.map((product) => (
                   <SwiperSlide onMouseMove={handleMouseOver} className="cursor-grab" onMouseLeave={handleMouseLeave} key={product._id}>
-                  <ProductCard product={product}/>
+                  <ProductCard loading={loading} product={product}/>
                 </SwiperSlide>
         ))}
       </Swiper>

@@ -6,6 +6,7 @@ import { useStore } from '../../../store/store';
 import toast from "react-hot-toast";
 import MarqueeCartBtn from '../../../components/MarqueeCartBtn';
 import OtherProducts from '../../../components/other-products';
+import { Skeleton } from '../../../components/ui/skeleton';
 
 const ProductPage = () => {
    
@@ -15,15 +16,20 @@ const ProductPage = () => {
    const [loading, setLoading] = useState<boolean>(false);
    const [selectedSize, setSelectedSize] = useState<string>('');
    const navigate = useNavigate();
+   const [productLoading, setProductLoading] = useState<boolean>(true);
 
    useEffect(() => {
        (async function (){
+        setProductLoading(true);
         try {
             const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/products/product/${id}`);
             const data = await res.json();
             setProduct(data);
         } catch (error) {
+            setProductLoading(false);
             console.log(error);
+        }finally{
+            setProductLoading(false);
         }
        })()
    }, []);
@@ -95,12 +101,12 @@ const ProductPage = () => {
             <div className='flex lg:flex-row flex-col items-start gap-[1rem]'>
                 <aside className='flex flex-col'>
                     {product?.images.map((image) => (
-                        <img src={image} alt={product.name} className='border border-black w-[5rem] h-[5rem] object-cover' />
+                        productLoading ? <Skeleton className='w-[5rem] h-[5rem]'/> : <img src={image} alt={product.name} className='border border-black w-[5rem] h-[5rem] object-cover' />
                     ))}
                 </aside>
                 <div>
                      {product?.images.map((image) => (
-                        <img src={image} alt={product.name} className='border border-black h-[25rem] w-[30rem] object-cover' />
+                        productLoading ? <Skeleton className='h-[25rem] w-[30rem]'/> : <img src={image} alt={product.name} className='border border-black h-[25rem] w-[30rem] object-cover' />
                     ))}
                 </div>
                 <div className='lg:w-[50%] w-full'>

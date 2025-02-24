@@ -7,6 +7,8 @@ import 'lenis/dist/lenis.css'
 import Collections from "./components/Collections"
 import Layout from "./layout"
 import { useStore } from "./store/store"
+// import GetNow from "./components/get-now";
+import CTA from "./components/cta";
 
 
 function App() {
@@ -59,6 +61,8 @@ function App() {
          <Collections />
          <MenProducts />
          <WomenProducts />
+         {/* <GetNow /> */}
+         <CTA />
     </Layout>
   )
 

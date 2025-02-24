@@ -1,12 +1,12 @@
 import { useEffect, useRef } from 'react'
-// import gsap from "gsap";
-// import ScrollTrigger from "gsap/ScrollTrigger";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 // import SplitText from "gsap-trial/SplitText";
 import { useStore } from '../store/store';
 import WomenProductsSwiper from './swiper/WomenProductsSwiper';
 
 // gsap.registerPlugin(SplitText);
-// gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
 const WomenProducts = () => {
 
@@ -17,7 +17,7 @@ const WomenProducts = () => {
 
     if (!collections.length) return;
     
-    if(ref.current){
+    // if(ref.current){
     //   let womenCollectionHeading = new SplitText(".women-heading", {type: "chars"})
 
     // gsap.from(womenCollectionHeading.chars, {
@@ -33,7 +33,7 @@ const WomenProducts = () => {
     //     stagger: 0.025,
     //     duration: 0.7
     // })
-    }
+    // }
 }, [ref.current])
 
 

@@ -68,7 +68,7 @@ const CollectionPage = () => {
               <div className='lg:grid flex items-start flex-col grid-cols-3 gap-[1rem] lg:mt-0 mt-[2rem]'>
                    {products.length > 0 ? (
                       <>
-                        {products.map((product) => (
+                        {products.filter((product) => product.collectionId.name.toLowerCase() === collection?.name.toLowerCase()).map((product) => (
                         <ProductCard product={product}/>
                          ))}
                       </>

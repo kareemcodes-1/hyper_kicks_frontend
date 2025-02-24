@@ -1,11 +1,15 @@
 
 import { Product } from "../../types/types";
+import { Skeleton } from "../ui/skeleton";
 
-const ProductCard = ({ product }: { product: Product }) => {
+const ProductCard = ({ product, loading }: { product: Product, loading: boolean }) => {
   
 
   return (
    <>
+    {loading ? (
+        <Skeleton className="h-[500px] w-full mr-[1rem]" />
+      ) : (
      <a
       href={`/products/product/${product._id}`}
       className=" lg:p-0 p-[1rem] w-full border border-black border-t h-[500px] flex flex-col gap-0 text-center items-center justify-center relative"
@@ -33,6 +37,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         </div>
       </div>
     </a>
+       )}
    </>
   );
 };

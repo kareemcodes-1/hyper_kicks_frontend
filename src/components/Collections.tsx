@@ -32,15 +32,11 @@ const Collections = () => {
     }, []);
 
   return (
-     <div className='lg:grid flex flex-col grid-cols-3 mt-[2rem] lg:gap-0 gap-[1rem] mx-[1.5rem] overflow-hidden'>
-          {collections.length > 0 ? (
+     <div className='lg:grid flex flex-col lg:grid-cols-3 mt-[2rem] lg:gap-0 gap-[1rem] lg:px-[1.5rem] px-[1rem] overflow-hidden'>
+          {collections.length > 0 && (
               collections.map((collection) => (
                 <CollectionCard collection={collection} key={collection._id} isLoading={isLoading}/>
               ))
-          ): (
-            <div>
-                <h1>No Collections...</h1>
-            </div>
           )}
      </div>
   )

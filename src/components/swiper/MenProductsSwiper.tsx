@@ -17,6 +17,7 @@ export default function MenProductsSwiper() {
   const { collections} = useStore();
 
   const [menCollectionProducts, setMenCollectionProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState<boolean>(false);
@@ -52,11 +53,15 @@ export default function MenProductsSwiper() {
     if (collections[0]?._id) {
       (async function () {
         try {
+          setLoading(true);
           const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/collections/products/collection/${collections[0]._id}`);
           const data = await res.json();
           setMenCollectionProducts(data);
         } catch (error) {
+          setLoading(false);
           console.error("Error fetching collection products:", error);
+        }finally{
+          setLoading(false);
         }
       })();
     }
@@ -91,7 +96,7 @@ export default function MenProductsSwiper() {
       >
         {menCollectionProducts.map((product) => (
                   <SwiperSlide onMouseMove={handleMouseOver} onMouseLeave={handleMouseLeave} className="cursor-grab" key={product._id}>
-                  <ProductCard product={product}/>
+                  <ProductCard product={product} loading={loading}/>
                 </SwiperSlide>
         ))}
       </Swiper>
@@ -110,7 +115,7 @@ export default function MenProductsSwiper() {
       >
         {menCollectionProducts.map((product) => (
                   <SwiperSlide onMouseMove={handleMouseOver} onMouseLeave={handleMouseLeave}  className="cursor-grab" key={product._id}>
-                  <ProductCard  product={product}/>
+                  <ProductCard loading={loading}  product={product}/>
                 </SwiperSlide>
         ))}
       </Swiper>

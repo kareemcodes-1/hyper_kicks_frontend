@@ -4,17 +4,6 @@ import { useEffect } from 'react';
 import SplitText from './animate-text';
 
 const HeroText = () => {
-
-  const handleSplitComplete = ({ chars, words, lines }) => {
-    // Example animation using GSAP
-    gsap.from(chars, {
-      y: 50,
-      opacity: 0,
-      stagger: 0.05,
-      duration: 0.8,
-      ease: "power3.out",
-    });
-  };
     
 //   useEffect(() => {
 
