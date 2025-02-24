@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useStore } from '../store/store'
 import Layout from '../layout';
 import ProductCard from '../components/cards/ProductCard';
@@ -6,9 +6,12 @@ import OtherProducts from '../components/other-products';
 
 const Wishlists = () => {
   const {wishlists, setWishLists} = useStore();
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
       (async function () {
-           const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/wishlists`, {
+          try {
+               setLoading(true);
+              const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/wishlists`, {
                method: "GET",
                headers: {
                     'Content-Type': 'application/json',
@@ -17,6 +20,12 @@ const Wishlists = () => {
            });
            const data = await res.json();
            setWishLists(data);
+          } catch (error) {
+               console.log(error);
+               setLoading(false);
+          }finally{
+               setLoading(false)
+          }
       })()
   }, []);
 
@@ -31,7 +40,7 @@ const Wishlists = () => {
                    {wishlists.length > 0 ? (
                       <>
                         {wishlists.map((wishlist) => (
-                        <ProductCard product={wishlist.productId}/>
+                        <ProductCard loading={loading} product={wishlist.productId}/>
                          ))}
                       </>
                    ) : (

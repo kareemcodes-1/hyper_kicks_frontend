@@ -79,6 +79,7 @@ const Hero = () => {
               alt=""
               className="w-full h-full object-cover hero-img border"
             />
+            {/* https://i.pinimg.com/736x/f0/cd/40/f0cd40bf5b8d7d7efee3256b5766522a.jpg */}
           </div>
           <div className="overflow-hidden ">
             <p className="lg:text-[1.2rem] text-[1rem] lg:w-[400px] w-full hero-desc bebas">

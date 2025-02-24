@@ -15,6 +15,7 @@ const CollectionPage = () => {
     const {handleSort, products, setProducts, resetFilter} = useStore();
     const [openSortDropDown, setOpenSortDropDown] = useState<boolean>(false);
     const [openFilterModal, setOpenFilterModal] = useState<boolean>(false);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         (async function () {
@@ -24,14 +25,22 @@ const CollectionPage = () => {
         })();
 
         (async function () {
-          const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/collections/products/collection/${id}`, {
-            method: "GET",
-            headers: {
-              'Content-Type': 'application/json',
-            }
-          });
-          const data = await res.json();
-          setProducts(data);
+          try {
+            setLoading(true);
+            const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/collections/products/collection/${id}`, {
+              method: "GET",
+              headers: {
+                'Content-Type': 'application/json',
+              }
+            });
+            const data = await res.json();
+            setProducts(data);
+          } catch (error) {
+            console.log(error);
+            setLoading(false);
+          }finally{
+            setLoading(false);
+          }
         })();
     }, []);
 
@@ -69,7 +78,7 @@ const CollectionPage = () => {
                    {products.length > 0 ? (
                       <>
                         {products.filter((product) => product.collectionId.name.toLowerCase() === collection?.name.toLowerCase()).map((product) => (
-                        <ProductCard product={product}/>
+                        <ProductCard loading={loading} product={product}/>
                          ))}
                       </>
                    ) : (
