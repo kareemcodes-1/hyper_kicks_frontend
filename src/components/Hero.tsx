@@ -77,9 +77,13 @@ const Hero = () => {
         /> */}
         <h1 className="text-[5.5rem] text-center w-full sm:text-[9rem] md:text-[12rem] lg:text-[21rem] lg:mt-[1.2rem] mt-[3.5rem] lg:h-[20rem] h-[8rem] lg:leading-[25rem]  relative text-black hero-heading overflow-hidden">
           HYPERKICKS{" "}
-          <sup className=" text-[2rem]" style={{ top: "-6em" }}>
-            ™
-          </sup>
+         <sup 
+  className="hidden lg:inline text-[2rem]" 
+  style={{ top: "-6em" }}
+>
+  ™
+</sup>
+
         </h1>
         {/* </AnimatedContent> */}
         {/* </div> */}

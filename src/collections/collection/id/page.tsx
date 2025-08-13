@@ -61,7 +61,7 @@ const CollectionPage = () => {
           closeModal={() => setOpenFilterModal(false)}
         />
       )}
-      <div className="mt-[3rem] px-[1.5rem] mb-[1rem]">
+      <div className="lg:mt-[4rem] mt-[5rem] px-[1.5rem] mb-[1rem]">
         <div className="flex lg:items-center items-start lg:flex-row flex-col justify-between w-full">
           <h1 className="lg:text-[8rem] text-black text-[4rem]">
             {collection?.name} Collection
