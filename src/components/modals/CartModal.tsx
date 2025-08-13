@@ -63,7 +63,7 @@ const CartModal = () => {
                   <div className="flex items-start justify-between pt-[.5rem]">
                     <div className="bottom-[1.5rem] left-[.5rem] ">
                       <div className="text-start">
-                        <p className="font-medium text-[2rem] leading-[1rem] uppercase mb-2 bebas">
+                        <p className=" text-[2rem] leading-[1.5rem] uppercase mb-2 bebas">
                           {product.name}
                         </p>
                       </div>
@@ -152,7 +152,7 @@ const CartModal = () => {
 
                <div className="w-full border-t border-black">
                    <div className="flex items-center justify-between w-full px-[.4rem] py-[1rem] gap-[.5rem]">
-                   <button type="button" className='bg-transparent border border-black text-black px-4 h-[2.2rem] rounded-[10rem] w-full' 
+                   <button type="button" className='bg-transparent border border-black text-black px-4 h-[3rem] rounded-[10rem] w-full bebas text-[2rem]' 
                    onClick={() => {
                     deleteAllCartItems()
                     toast.success('Deleted Cart');

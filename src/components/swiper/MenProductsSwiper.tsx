@@ -11,13 +11,15 @@ import { Autoplay } from 'swiper/modules';
 import { useStore } from "../../store/store";
 import ProductCard from "../cards/ProductCard";
 import {  Product } from "../../types/types";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export default function MenProductsSwiper() {
 
   const { collections} = useStore();
 
   const [menCollectionProducts, setMenCollectionProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState<boolean>(false);
@@ -53,12 +55,10 @@ export default function MenProductsSwiper() {
     if (collections[0]?._id) {
       (async function () {
         try {
-          setLoading(true);
           const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/collections/products/collection/${collections[0]._id}`);
           const data = await res.json();
           setMenCollectionProducts(data);
-        } catch (error) {
-          setLoading(false);
+        } catch (error) {;
           console.error("Error fetching collection products:", error);
         }finally{
           setLoading(false);
@@ -70,7 +70,7 @@ export default function MenProductsSwiper() {
   return (
     <div>
        <button
-       className={`drag-btn  ${hovered ? 'opacity-100' : 'opacity-0'} border-black border cursor-grab bg-white transition-opacity duration-500 ease-in-out rounded-[10rem] z-[100] w-[7rem] h-[2.5rem] text-[1.2rem]`}
+       className={`drag-btn  ${hovered ? 'opacity-100' : 'opacity-0'} border-black border cursor-grab text-[1.5rem] uppercase bebas bg-white transition-opacity duration-500 ease-in-out rounded-[10rem] z-[100] w-[7rem] h-[2.5rem]`}
       style={{
         position: "fixed",
         left: position.x,
@@ -96,7 +96,7 @@ export default function MenProductsSwiper() {
       >
         {menCollectionProducts.map((product) => (
                   <SwiperSlide onMouseMove={handleMouseOver} onMouseLeave={handleMouseLeave} className="cursor-grab" key={product._id}>
-                  <ProductCard product={product} loading={loading}/>
+                         {loading ? <Skeleton className="!h-[500px] !w-full"/> :  <ProductCard  product={product}/>}
                 </SwiperSlide>
         ))}
       </Swiper>
@@ -115,7 +115,7 @@ export default function MenProductsSwiper() {
       >
         {menCollectionProducts.map((product) => (
                   <SwiperSlide onMouseMove={handleMouseOver} onMouseLeave={handleMouseLeave}  className="cursor-grab" key={product._id}>
-                  <ProductCard loading={loading}  product={product}/>
+                    {loading ? <Skeleton className="!h-[500px] !w-full"/> :  <ProductCard  product={product}/>}
                 </SwiperSlide>
         ))}
       </Swiper>

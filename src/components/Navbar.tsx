@@ -7,6 +7,7 @@ import CartModal from "./modals/CartModal";
 import SearchModal from "./modals/SearchModal";
 import { Menu, Search, ShoppingCart } from "lucide-react";
 import MenuModal from "./modals/MenuModal";
+import AnimatedContent from "../lib/animated-content";
 
 // gsap.registerPlugin(SplitText);
 
@@ -28,22 +29,28 @@ const Navbar = () => {
 
   useEffect(() => {
     (async function () {
-      const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/collections`);
+      const res = await fetch(
+        `${import.meta.env.VITE_SERVER_URL}/api/collections`
+      );
       const data = await res.json();
       setCollections(data);
     })();
   }, []);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_SERVER_URL}/api/products`).then((res) => res.json())
-    .then((data) => setProducts(data));
-   }, []);
+    fetch(`${import.meta.env.VITE_SERVER_URL}/api/products`)
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
 
   async function Logout() {
     try {
-      const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/users/auth/logout`, {
-        method: "POST",
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_SERVER_URL}/api/users/auth/logout`,
+        {
+          method: "POST",
+        }
+      );
 
       if (res.ok) {
         logout();
@@ -56,75 +63,165 @@ const Navbar = () => {
 
   return (
     <header className="fixed w-full top-0 py-[.5rem] lg:px-[2rem] px-[1.5rem] border-b border-black z-[100]">
-      
       <div className="lg:hidden block">
-            <MenuModal openMenuModal={openMenuModal} closeModal={() => setOpenMenuModal(false)}/>
-        </div>
+        <MenuModal
+          openMenuModal={openMenuModal}
+          closeModal={() => setOpenMenuModal(false)}
+        />
+      </div>
 
       <nav className="flex items-center justify-between">
-        <a className="text-[1.5rem] text-black bebas" href="/">
-          HYPERKICKS
-        </a>
+        <AnimatedContent
+          distance={20}
+          direction="vertical"
+          reverse={false}
+          config={{ tension: 80, friction: 20 }}
+          initialOpacity={0.2}
+          animateOpacity
+          scale={1.1}
+          threshold={0.2}
+        >
+          <a className="text-[1.7rem] text-black bebas" href="/">
+            HYPERKICKS
+          </a>
+        </AnimatedContent>
 
         <ul className="lg:flex hidden items-center gap-[1rem] text-black">
           {collections.map((collection) => (
-            <li key={collection._id}>
-              <a
-                href={`/collections/collection/${collection._id}`}
-                className="text-[1.1rem] "
-              >
-                {collection.name}
-              </a>
-            </li>
+            <AnimatedContent
+              distance={20}
+              direction="vertical"
+              reverse={false}
+              config={{ tension: 80, friction: 20 }}
+              initialOpacity={0.2}
+              animateOpacity
+              scale={1.1}
+              threshold={0.2}
+            >
+              <li key={collection._id}>
+                <a
+                  href={`/collections/collection/${collection._id}`}
+                  className=" uppercase bebas lg:text-[1.7rem] text-[1.5rem]"
+                >
+                  {collection.name}
+                </a>
+              </li>
+            </AnimatedContent>
           ))}
-          {/* <li><a href="" className='text-[1.2rem] '>MENS</a></li>
-                <li><a href="" className='text-[1.2rem]'>WOMENS</a></li>
-                <li><a href="" className='text-[1.2rem]'>KIDS</a></li> */}
         </ul>
 
         <div className="lg:hidden flex items-center gap-[.8rem]">
-        <Menu className="cursor-pointer" onClick={() => setOpenMenuModal(true)}/>
-        <ShoppingCart className="cursor-pointer" onClick={() => setOpenCartModal(true)}/>
-        <Search className="cursor-pointer" onClick={() => setOpenSearchModal(true)} />
+          <Menu
+            className="cursor-pointer"
+            onClick={() => setOpenMenuModal(true)}
+          />
+          <ShoppingCart
+            className="cursor-pointer"
+            onClick={() => setOpenCartModal(true)}
+          />
+          <Search
+            className="cursor-pointer"
+            onClick={() => setOpenSearchModal(true)}
+          />
         </div>
 
-
-
         <div className="lg:flex hidden items-center gap-[1rem] text-[1.1rem] text-black">
-          <div
-            onClick={() => setOpenCartModal(true)}
-            className="cursor-pointer"
+          <AnimatedContent
+            distance={20}
+            direction="vertical"
+            reverse={false}
+            config={{ tension: 80, friction: 20 }}
+            initialOpacity={0.2}
+            animateOpacity
+            scale={1.1}
+            threshold={0.2}
           >
-            Cart ({cart.length})
-          </div>
-          <div
-            onClick={() => setOpenSearchModal(true)}
-            className="cursor-pointer"
-          >
-            Search
-          </div>
-          <Link to={'/wishlists'}>Wishlist</Link>
-          {userInfo ? (
             <div
-              onClick={() => setOpenProfileMenu(!openProfileMenu)}
-              className="cursor-pointer hover:bg-gray-200 rounded-full transition hover:opacity-80"
+              onClick={() => setOpenCartModal(true)}
+              className="cursor-pointer uppercase bebas lg:text-[1.7rem] text-[1.5rem]"
             >
-              <img
-                src={userInfo?.avatar}
-                alt={userInfo?.name}
-                className="w-[1.5rem] h-[1.5rem] rounded-full"
-              />
+              Cart ({cart.length})
             </div>
-          ) : (
-            <Link to={"/login"}>Login</Link>
-          )}
+          </AnimatedContent>
+
+          <AnimatedContent
+            distance={20}
+            direction="vertical"
+            reverse={false}
+            config={{ tension: 80, friction: 20 }}
+            initialOpacity={0.2}
+            animateOpacity
+            scale={1.1}
+            threshold={0.2}
+          >
+            <div
+              onClick={() => setOpenSearchModal(true)}
+              className="cursor-pointer uppercase bebas lg:text-[1.7rem] text-[1.5rem]"
+            >
+              Search
+            </div>
+          </AnimatedContent>
+
+          <AnimatedContent
+            distance={20}
+            direction="vertical"
+            reverse={false}
+            config={{ tension: 80, friction: 20 }}
+            initialOpacity={0.2}
+            animateOpacity
+            scale={1.1}
+            threshold={0.2}
+          >
+            <Link to={"/wishlists"} className="uppercase bebas lg:text-[1.7rem] text-[1.5rem]">Wishlist</Link>
+          </AnimatedContent>
+
+          <AnimatedContent
+            distance={20}
+            direction="vertical"
+            reverse={false}
+            config={{ tension: 80, friction: 20 }}
+            initialOpacity={0.2}
+            animateOpacity
+            scale={1.1}
+            threshold={0.2}
+          >
+            {userInfo ? (
+              <div
+                onClick={() => setOpenProfileMenu(!openProfileMenu)}
+                className="cursor-pointer hover:bg-gray-200 rounded-full transition hover:opacity-80"
+              >
+                <img
+                  src={userInfo?.avatar}
+                  alt={userInfo?.name}
+                  className="w-[1.5rem] h-[1.5rem] rounded-full"
+                />
+              </div>
+            ) : (
+              <Link to={"/login"} className="uppercase bebas lg:text-[1.7rem] text-[1.5rem]">Login</Link>
+            )}
+          </AnimatedContent>
 
           {openProfileMenu && (
             <div className="absolute right-0 top-[3rem] mt-2 w-[10rem] bg-white border border-gray-200 rounded-lg shadow-lg z-50">
               <ul className="flex flex-col text-[.925rem]">
-                  <Link to="/profile" className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Profile</Link>
-                  <Link className="px-4 py-2 hover:bg-gray-100 cursor-pointer" to="/orders">Orders</Link>
-                  <Link className="px-4 py-2 hover:bg-gray-100 cursor-pointer" to="/settings">Settings</Link>
+                <Link
+                  to="/profile"
+                  className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                >
+                  Profile
+                </Link>
+                <Link
+                  className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                  to="/orders"
+                >
+                  Orders
+                </Link>
+                <Link
+                  className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                  to="/settings"
+                >
+                  Settings
+                </Link>
                 <li
                   className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                   onClick={Logout}
@@ -137,12 +234,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      
-
-      {openCartModal && (
-        <CartModal
-        />
-      )}
+      {openCartModal && <CartModal />}
       {openSearchModal && (
         <SearchModal
           setOpenSearchModal={() => setOpenSearchModal(false)}

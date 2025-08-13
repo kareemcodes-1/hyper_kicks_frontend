@@ -1,9 +1,8 @@
-import { useEffect, useRef } from "react";
+
 import { Collection } from "../../types/types";
 import { MdArrowOutward } from "react-icons/md";
 import { Link } from "react-router";
-import gsap from "gsap";
-import { Skeleton } from "../ui/skeleton";
+import Skeleton from "react-loading-skeleton";
 // import ScrollTrigger from "gsap-trial/ScrollTrigger";
 // import SplitText from "gsap-trial/SplitText";
 
@@ -13,22 +12,14 @@ import { Skeleton } from "../ui/skeleton";
 const CollectionCard = ({
   collection,
   isLoading,
+  imageRef,
 }: {
   collection: Collection;
   isLoading: boolean;
+  imageRef: any;
 }) => {
   
-  const ref = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    if (!isLoading && ref.current) {
-      gsap.fromTo(
-        ref.current,
-        { y: "100%" },
-        { y: "0", duration: 1, ease: "power3.out", stagger: 0.2, }
-      );
-    }
-  }, [isLoading]);
 
   return (
     <>
@@ -36,13 +27,13 @@ const CollectionCard = ({
         <Skeleton className="lg:h-[450px] h-[300px] w-full mr-[1rem] rounded-xl" />
       ) : (
         <div
-          ref={ref}
           className="lg:h-[450px] h-[300px] relative border border-black overflow-hidden"
         >
           <Link to={`/collections/collection/${collection._id}`}>
             <img
               src={collection.image}
               alt={collection.name}
+              ref={imageRef}
               className="w-full h-full object-cover"
             />
             <div className="absolute bottom-[1rem] right-[1rem] text-[3rem] text-white flex items-center justify-center gap-[.3rem]">

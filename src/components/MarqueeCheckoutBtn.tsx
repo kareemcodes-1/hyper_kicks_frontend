@@ -56,7 +56,7 @@ const MarqueeCheckoutBtn = () => {
     
 
   return (
-    <button onClick={handleCheckout}  onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} type="button" className='bg-[#ddb31b] flex items-center justify-center border border-black text-black h-[2.2rem] px-4 rounded-[10rem] w-full cursor-pointer'>
+    <button onClick={handleCheckout}  onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} type="button" className='bg-[#ddb31b] bebas text-[2rem] flex items-center justify-center border border-black text-black h-[3rem] px-4 rounded-[10rem] w-full cursor-pointer'>
         {loading ? <Loading type='black' /> : hovered ? <Marquee autoFill>&nbsp; PROCEED TO CHECKOUT </Marquee> : 'CHECKOUT'}
     </button>
   )

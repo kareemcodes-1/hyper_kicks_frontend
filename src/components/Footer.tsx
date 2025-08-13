@@ -15,7 +15,7 @@ const Footer = () => {
          <a href="tel:+2347063535374" className="mr-[1rem] lg:hidden">CALL</a>
        </Marquee>
     <div className='bg-black w-full lg:grid grid-cols-2'>
-      <h1 className="lg:block hidden text-[5rem] lg:px-0 px-[.5rem] xs:text-[4rem] lg:text-[15rem] lg:leading-[15rem] text-white overflow-hidden">
+      <h1 className="lg:block hidden text-[5rem] lg:px-[1.5rem] px-[1rem] xs:text-[4rem] lg:text-[15rem] lg:leading-[15rem] text-white overflow-hidden">
          DROP US <br /> A LINE
        </h1>
 

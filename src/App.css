@@ -21,8 +21,7 @@ body {
 }
 
 .bebas{
-  font-family: "Bebas Neue", serif;
-  letter-spacing: 0.5px;
+  font-family: "Bebas Neue", serif !important;
 }
 
 .azert-mono{

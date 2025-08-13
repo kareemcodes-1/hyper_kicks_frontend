@@ -3,14 +3,15 @@ import { useStore } from '../store/store'
 import Layout from '../layout';
 import ProductCard from '../components/cards/ProductCard';
 import OtherProducts from '../components/other-products';
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Wishlists = () => {
   const {wishlists, setWishLists} = useStore();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
       (async function () {
           try {
-               setLoading(true);
               const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/wishlists`, {
                method: "GET",
                headers: {
@@ -22,7 +23,6 @@ const Wishlists = () => {
            setWishLists(data);
           } catch (error) {
                console.log(error);
-               setLoading(false);
           }finally{
                setLoading(false)
           }
@@ -37,16 +37,12 @@ const Wishlists = () => {
               </div>
 
               <div className='lg:grid flex flex-col grid-cols-3 gap-[1rem]'>
-                   {wishlists.length > 0 ? (
+                   {wishlists.length > 0 && (
                       <>
                         {wishlists.map((wishlist) => (
-                        <ProductCard loading={loading} product={wishlist.productId}/>
+                               loading ? <Skeleton className="!h-[500px] !w-full"/> : <ProductCard product={wishlist.productId}/>
                          ))}
                       </>
-                   ) : (
-                       <div>
-                            No products.
-                       </div>
                    )}
               </div>
 
