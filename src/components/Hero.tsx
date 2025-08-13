@@ -1,25 +1,25 @@
 // import { useEffect, useRef, useState } from 'react'
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef} from "react";
 import SplitText from "gsap/SplitText";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Marquee from "react-fast-marquee";
-import AnimatedContent from "../lib/animated-content";
+// import Marquee from "react-fast-marquee";
+// import AnimatedContent from "../lib/animated-content";
 // import SplitText from "../lib/split-text";
 
 gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
-  const [hovered, setHovered] = useState<boolean>(false);
+  // const [hovered, setHovered] = useState<boolean>(false);
 
-  function handleMouseEnter() {
-    setHovered(true);
-  }
+  // function handleMouseEnter() {
+  //   setHovered(true);
+  // }
 
-  function handleMouseLeave() {
-    setHovered(false);
-  }
+  // function handleMouseLeave() {
+  //   setHovered(false);
+  // }
 
   useEffect(() => {
     let heroHeading = new SplitText(".hero-heading", { type: "chars" });
@@ -56,11 +56,11 @@ const Hero = () => {
     }
   }, [ref]);
 
-  function handleScrollDown() {
-    document
-      .querySelector(".mens-collection")
-      ?.scrollIntoView({ behavior: "smooth" });
-  }
+  // function handleScrollDown() {
+  //   document
+  //     .querySelector(".mens-collection")
+  //     ?.scrollIntoView({ behavior: "smooth" });
+  // }
 
   return (
     <>

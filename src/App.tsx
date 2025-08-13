@@ -8,7 +8,7 @@ import Collections from "./components/Collections"
 import Layout from "./layout"
 import { useStore } from "./store/store"
 // import GetNow from "./components/get-now";
-import CTA from "./components/cta";
+// import CTA from "./components/cta";
 import News from "./components/News";
 
 
