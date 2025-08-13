@@ -19,11 +19,11 @@ const MenProducts = () => {
     if (!collections.length) return;
 
     if(ref.current){
-      let menCollectionHeading = new SplitText(".men-heading", {type: "chars"})
+      let menCollectionHeading = new SplitText(ref.current, {type: "chars"})
 
       gsap.from(menCollectionHeading.chars, {
           scrollTrigger: {
-              trigger: ".men-heading",
+              trigger: ref.current,
               start: "top 80%",
               end: "bottom 20%",
               toggleActions: "play none none reverse",
@@ -39,11 +39,11 @@ const MenProducts = () => {
   return (
     <section className=" pt-[2rem] pb-[1rem] mens-collection" >
       <div className="mx-[1.5rem]">
-        <div className='overflow-hidden'>
-        <h2  className="lg:text-[11rem] text-[3.5rem] text-black mb-[.5rem] men-heading lg:leading-[10rem]" ref={ref}>
+        {/* <div className='overflow-hidden'> */}
+        <h2  className="lg:text-[11rem] text-[3.5rem] text-black mb-[.5rem] men-heading lg:leading-[10rem] overflow-hidden" ref={ref}>
           MENS COLLECTION
         </h2>
-        </div>
+        {/* </div> */}
 
 
         <MenProductsSwiper/>
