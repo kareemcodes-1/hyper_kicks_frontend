@@ -28,8 +28,6 @@ const CTA = () => {
   text="VENTURE AWAITS WITH THE LATEST EXCLUSIVE ADIDAS SNEAKER COLLECTION"
   className="text-center mx-[1.5rem] font-medium lg:text-[5rem] text-[2.8rem] overflow-hidden"
   delay={20}
-  animationFrom={{ transform: "translate3d(0,50px,0)" }}
-  animationTo={{  transform: "translate3d(0,0,0)" }}
   // @ts-ignore
   easing="easeOutCubic"
   threshold={0.1}

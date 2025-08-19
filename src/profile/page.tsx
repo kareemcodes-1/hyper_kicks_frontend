@@ -5,13 +5,24 @@ import toast from 'react-hot-toast';
 
 import { useFormStatus } from 'react-dom';
 import Loading from '../components/loading';
+import Marquee from 'react-fast-marquee';
 
 const SubmitBtn = () => {
 
     const {pending} = useFormStatus();
 
+      const [hovered, setHovered] = useState<boolean>(false);
+
+    function handleMouseEnter(){
+        setHovered(true);
+    }
+
+    function handleMouseLeave(){
+        setHovered(false);
+    }
+
     return (
-      <button type="submit" disabled={pending} className='border border-black rounded-[10rem] h-[2rem] lg:w-[10%] w-full cursor-pointer'>{pending ? <Loading type='black'/> : 'Save'}</button>
+        <button type="submit" disabled={pending} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className='bg-[#ddb31b] text-[1.5rem] bebas flex items-center justify-center border border-black text-black h-[2.5rem] px-4 rounded-[10rem] w-[10rem] cursor-pointer uppercase'>{pending ? <Loading  type='black'/> : hovered ? <Marquee autoFill>&nbsp; SUBMIT </Marquee> : 'SUBMIT'}</button>
     )
   }
 

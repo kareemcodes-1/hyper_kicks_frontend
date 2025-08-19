@@ -39,9 +39,11 @@ const SearchPage = () => {
     <Layout>
         <div className='mt-[5rem] mb-[1rem] px-[2rem]'>
             <h1 className='lg:text-[5rem] text-[3.5rem]'>{filteredProducts.length} Results found.</h1>
-            {filteredProducts.map((product) => (
+            <div className='lg:grid flex flex-col grid-cols-3 gap-[1rem]'>
+              {filteredProducts.map((product) => (
                    loading ? <Skeleton className="!h-[500px] !w-full"/> : <ProductCard product={product}/>
              ))}
+            </div>
 
 
              <OtherProducts />

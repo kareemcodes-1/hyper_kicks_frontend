@@ -1,5 +1,5 @@
 // import { useEffect, useRef, useState } from 'react'
-import { useEffect, useRef} from "react";
+import { useEffect, useRef } from "react";
 import SplitText from "gsap/SplitText";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -64,7 +64,7 @@ const Hero = () => {
 
   return (
     <>
-      <div className="flex flex-col items-start lg:mt-0 mt-[1.5rem] lg:px-[2rem] px-[1rem]">
+      <div className="flex flex-col items-start lg:mt-[2rem] mt-[1.5rem] lg:px-[2rem] px-[1rem]">
         {/* <SplitText
           text="HYPERKICKS"
           className="bebas text-[5.5rem] w-full sm:text-[9rem] md:text-[12rem] lg:text-[22rem] lg:mt-[1.2rem] mt-[3.5rem] lg:h-[20rem] h-[8rem] lg:leading-[25rem]  relative text-black hero-heading"
@@ -77,13 +77,9 @@ const Hero = () => {
         /> */}
         <h1 className="text-[5.5rem] text-center w-full sm:text-[9rem] md:text-[12rem] lg:text-[21rem] lg:mt-[1.2rem] mt-[3.5rem] lg:h-[20rem] h-[8rem] lg:leading-[25rem]  relative text-black hero-heading overflow-hidden">
           HYPERKICKS{" "}
-         <sup 
-  className="hidden lg:inline text-[2rem]" 
-  style={{ top: "-6em" }}
->
-  ™
-</sup>
-
+          <sup className="hidden lg:inline text-[2rem]" style={{ top: "-6em" }}>
+            ™
+          </sup>
         </h1>
         {/* </AnimatedContent> */}
         {/* </div> */}

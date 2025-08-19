@@ -124,7 +124,7 @@ const FilterModal = ({openFilterModal, closeModal} : {openFilterModal: boolean; 
               </Accordion>
           </div>
 
-          <button type="button" onClick={resetFilter} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className='bg-[#ddb31b] flex items-center justify-center border border-black text-black h-[2.2rem] px-4 rounded-[10rem] w-[10rem] cursor-pointer uppercase mt-[1.5rem]'>{hovered ? <Marquee autoFill>&nbsp; RESET FILTER </Marquee> : 'RESET FILTER'}</button>
+          <button type="button" onClick={resetFilter} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className='bg-[#ddb31b] text-[1.5rem] bebas flex items-center justify-center border border-black text-black h-[2.5rem] px-4 rounded-[10rem] w-[10rem] cursor-pointer uppercase mt-[1.5rem]'>{hovered ? <Marquee autoFill>&nbsp; RESET FILTER </Marquee> : 'RESET FILTER'}</button>
       </div>,
       document.body
     );

@@ -44,7 +44,7 @@ const CartModal = () => {
       <div className="flex h-full bg-white"  ref={ref}>
         <div className="w-[40%] lg:block hidden h-full overflow-y-auto">
           <div className="">
-            <h2 className="text-[2rem] p-[.5rem]">ANYTHING ELSE?</h2>
+            <h2 className="text-[2.5rem] p-[.5rem]">ANYTHING ELSE?</h2>
           </div>
 
           <div className="flex flex-col">
@@ -71,9 +71,9 @@ const CartModal = () => {
                         ${product.price}
                       </p>
                     </div>
-                    <div className="border border-black p-[.3rem] rounded-[1rem]">
+                    {/* <div className="border border-black p-[.3rem] rounded-[1rem]">
                       {product.collectionId.name}
-                    </div>
+                    </div> */}
                   </div>
                 </a>
               </div>

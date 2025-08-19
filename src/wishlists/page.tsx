@@ -35,16 +35,13 @@ const Wishlists = () => {
               <div className='flex items-center justify-between w-full'>
               <h1 className='lg:text-[8rem] text-[4rem] text-black'>All Wishlists</h1>
               </div>
-
+               {wishlists.length > 0 ? (
               <div className='lg:grid flex flex-col grid-cols-3 gap-[1rem]'>
-                   {wishlists.length > 0 && (
-                      <>
                         {wishlists.map((wishlist) => (
                                loading ? <Skeleton className="!h-[500px] !w-full"/> : <ProductCard product={wishlist.productId}/>
                          ))}
-                      </>
-                   )}
               </div>
+              ) : (<p className='lg:text-[1.3rem] text-[1rem] py-[3rem] text-center capitalize'>No Wishlists</p>)}
 
               <OtherProducts />
          </div>

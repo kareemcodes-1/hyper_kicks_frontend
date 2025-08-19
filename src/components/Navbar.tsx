@@ -216,12 +216,6 @@ const Navbar = () => {
                 >
                   Orders
                 </Link>
-                <Link
-                  className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                  to="/settings"
-                >
-                  Settings
-                </Link>
                 <li
                   className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                   onClick={Logout}

@@ -9,7 +9,7 @@ import toast from 'react-hot-toast';
 
 const SubmitBtn = () => {
   const {pending} = useFormStatus();
-  return <button disabled={pending} type="submit" className="flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-white bebas">{pending ? <Loading type='white'/> : 'Sign in'}</button>
+  return <button disabled={pending} type="submit" className="flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-white bebas text-[1.3rem]">{pending ? <Loading type='white'/> : 'Sign in'}</button>
 }
 
 const Login = () => {
@@ -72,7 +72,7 @@ const Login = () => {
 <div className="min-h-screen flex">
   <div className="flex flex-col justify-center w-full lg:w-1/2 px-6 py-12 lg:px-8">
     <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-      <h2 className="mt-10 text-center text-[1.3rem] font-semibold text-black bebas">
+      <h2 className="mt-10 text-center text-[1.5rem] font-semibold text-black bebas">
         Sign in to your account
       </h2>
     </div>
@@ -80,7 +80,7 @@ const Login = () => {
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <form className="space-y-6" action={formAction}>
         <div>
-          <Label htmlFor="email" className='bebas'>Email address</Label>
+          <Label htmlFor="email" className='bebas text-[1.1rem]'>Email address</Label>
           <div className="mt-2">
             <Input  
                type="email"
@@ -91,11 +91,11 @@ const Login = () => {
 
         <div>
           <div className="flex items-center justify-between">
-            <Label htmlFor="password" className='bebas'>Password</Label>
+            <Label htmlFor="password" className='bebas text-[1.1rem]'>Password</Label>
             <div className="text-[.8rem]">
               <a
                 href="#"
-                className="font-semibold bebas text-muted-foreground bebas"
+                className="text-muted-foreground "
               >
                 Forgot password?
               </a>
@@ -115,11 +115,11 @@ const Login = () => {
         </div>
       </form>
 
-      <p className="mt-10 text-center text-[.825rem] text-muted-foreground bebas">
+      <p className="mt-10 text-center text-[.825rem] text-muted-foreground">
         Dont have an account?{' '}
         <a
           href="/register"
-          className="font-semibold text-black underline bebas"
+          className=" text-black underline"
         >
           Sign up
         </a>

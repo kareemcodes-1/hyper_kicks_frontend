@@ -9,7 +9,7 @@ import toast from 'react-hot-toast';
 
 const SubmitBtn = () => {
   const {pending} = useFormStatus();
-  return <button disabled={pending} type="submit" className="bebas flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-white">{pending ? <Loading type='white'/> : 'Sign up'}</button>
+  return <button disabled={pending} type="submit" className="text-[1.3rem] bebas flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-white">{pending ? <Loading type='white'/> : 'Sign up'}</button>
 }
 
 const Register = () => {
@@ -68,7 +68,7 @@ const Register = () => {
 <div className="min-h-screen flex">
   <div className="flex flex-col justify-center w-full lg:w-1/2 px-6 py-12 lg:px-8">
     <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-      <h2 className="mt-10 text-center text-[1.3rem]  font-semibold text-black bebas">
+      <h2 className="mt-10 text-center text-[1.5rem]  font-semibold text-black bebas">
         Sign up to your account
       </h2>
     </div>
@@ -79,7 +79,7 @@ const Register = () => {
       <div>
           <label
             htmlFor="name"
-            className='bebas'
+            className='bebas text-[1.1rem]'
           >
             Name
           </label>
@@ -93,7 +93,7 @@ const Register = () => {
         </div>
 
         <div>
-        <Label htmlFor="email"  className='bebas'>Email address</Label>
+        <Label htmlFor="email" className='bebas text-[1.1rem]'>Email address</Label>
           <div className="mt-2">
             <Input  
                type="email"
@@ -104,11 +104,11 @@ const Register = () => {
 
         <div>
           <div className="flex items-center justify-between">
-          <Label htmlFor="password"  className='bebas'>Password</Label>
+          <Label htmlFor="password"  className='bebas text-[1.1rem]'>Password</Label>
             <div className="text-[.8rem]">
               <a
                 href="#"
-                className="font-semibold text-muted-foreground bebas"
+                className=" text-muted-foreground"
               >
                 Forgot password?
               </a>
@@ -128,11 +128,11 @@ const Register = () => {
         </div>
       </form>
 
-      <p className="mt-10 text-center text-[.825rem] text-muted-foreground bebas">
+      <p className="mt-10 text-center text-[.825rem] text-muted-foreground">
       Already have an account?{' '}
         <a
           href="/login"
-          className="font-semibold text-black underline"
+          className=" text-black underline"
         >
           Sign in
         </a>
